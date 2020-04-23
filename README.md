@@ -8,6 +8,7 @@ A double cross antenna is 4 dipole antennas mounted together (a dipole antenna b
 <br />
 &nbsp;
 ![](images_mini_task_1/FFZ3D3XJ3YQ5WX0.LARGE.jpg)
+###### Image of dipole connections in antenna 
 <br />
 &nbsp;
 To control SDR we need software like  SDRSharp (SDRSharp does not require installer). Since the satellites that we're interested in are in polar orbit (they orbit the earth around the poles) we can't listen for them whenever we want. Now, we have to receive signal from them only when the satellite is overhead. This means we now need a tracker to figure out where they are.
