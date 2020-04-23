@@ -5,4 +5,6 @@
 <br />
 &nbsp;
 A double cross antenna is 4 dipole antennas mounted together (a dipole antenna being just 2 pieces of bare wire), one at each cardinal direction and tipped at an angle. This allows the antenna to be omnidirectional and receive signals regardless of where the satellite is in the sky. The dipoles are mounted at an angle to the axis of the pole(see next section) because the signal from the satellites is right hand circularly polarized.
+<br />
+&nbsp;
 ![](images_mini_task_1/FFZ3D3XJ3YQ5WX0.LARGE.jpg)
