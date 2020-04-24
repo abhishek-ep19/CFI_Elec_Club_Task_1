@@ -28,6 +28,7 @@ In the bottom left corner there's drop down menu called Project Rate. Click it a
 </p>
 <br />
 &nbsp;
+
 ### 2. Game That Learns How to Play Itself
   First, to make this project, the tools we need are Arduino Nano R3, MG-90s servos, MR105ZZ ball bearing, Microsoft Windows 10, Unity, 3D Printer and screwdriver, etc. For the game and machine learning part we use the game engine Unity coupled with the ML-agents toolkit also developed by Unity. The ML-agent tool kit comes with a few pre-built examples, one of them being a ball balancing exercise, that could easily be turned into a game requiring only a single joystick.
 <br />
