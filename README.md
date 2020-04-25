@@ -152,10 +152,14 @@ MDF Waterproof sealer (Ensure does not contain metal) &
 
 ### 5. Raspberry Pi micro arcade machine
 We have to connect 2.4" LCD with an ILI9325 controller configurable to do 8-bit transfers and Raspberry Pi first. The 8-bit transfer mode was awesome, because it meant we could directly connect it to the GPIOs of the P1 header of the Raspberry Pi. That made the hardware really simple, and also much quicker because the data wouldn't have to be serialized first. The LCD has a 16-bit interface, which needs too many pins to connect it directly to the Raspberry Pi. To make it talk over just 8 of the 16 datalines, you need to move a jumper resistor from J1 to J2. We also need framebuffer module for intelligent displays to run LCD display installed in Raspberry Pi. Now, with the help of 3D printer the design of case for the game could be printed in whichever way we want the game to be. To interface the buttons and analog joystick to the Raspberry Pi, we we'll use M-Joy, which is a firmware one can burn into an ATMega8 to use it as an USB HID-based joystick. The problem with the Raspberry Pi is that it needs 5V and the Raspberry Pi isn't specced to run off any USB input voltage and can eat up more power than a USB port is specified to deliver.So, we have to build a battery powered 5V source. The LCD is controlled over 5 lines: 4 for the SPI-interface and one to reset the LCD. It also needs 3.3V for is power supply.
+&nbsp;
 
+### 6. Cell Phone Operated Land Rover
+Traditionally, wireless controlled robots make use of RF (radio frequency) circuits, which have their disadvantages of restricted operational range, limited frequency range, and limited control. This project introduces the use of the mobile phone for robotic control.  This technology is more controller friendly as it doesn’t interfere with other controllers and can use up to twelve controls.  It also has the advantages of robust control and provides working range as large as the coverage area of the service provider. Although the look and capabilities of these robots vary, they share mechanically movable structures under some form of control. 
+<br />The robot is controlled by making a call on the mobile phone attached to the robot. In the course of the call if any button is pressed a ‘dual-tone multiple-frequency’ (DTMF) tone is heard at the other end of the call. The cell phone mounted on the robot perceives this tone and then the robot processes it by the ATmega16 microcontroller with the help of DTMF decoder MT8870. The robots are controlled in three phases namely reception, processing, and action. Here preceptors are sensors mounted on the robot and the processing is done by on-board microcontroller or processor. This robot works either with the help of motors or with some other actuators.
+&nsbp;
 
-
-
+### 7. 
 
 
 
