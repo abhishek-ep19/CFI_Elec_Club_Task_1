@@ -49,9 +49,107 @@ In the bottom left corner there's drop down menu called Project Rate. Click it a
 <br />
 
 ### 3. Electronic Stamp
-### 4. 
+Before starting with the project we need to know what actually happens in a normal inkjet. An inkjet printer cartridge these days is an advanced system, with perhaps hundreds of 'nozzles'. A nozzle is a small hole from which a droplet of ink is fired. The method of firing differs from manufacturer to manufacturer. In the case of the Hewlett Packard (HP) cartridge that we use in this circuit, the nozzles are operated thermally. In a normal inkjet printer the print head is moved back and forth with a motor and a guiding system. If however, we want to make a manageable device then it is not convenient to integrate this entire system into an electronic stamp.
+<br />
+&nbsp;
+<p align="center">
+  <img width="450" height="360" src="https://user-images.githubusercontent.com/64124723/80280597-a845b580-8722-11ea-9f7e-56e5568002b9.jpg">
+  <br />Schematic Diagram of microcontroller with the cartridge
+</p>
+<br />
+&nbsp;
 
+<br />B1: 9V battery
+<br />C1, C2: electrolithic capacitor, 22uF
+<br />C3: capacitor, 100nF
+<br />C4: capacitor, 22uF, 25V
+<br />L1: See text
+<br />IC1: 78L05
+<br />IC2: ATTiny2313
+<br />D1: 1N4001
+<br />R1: trimpotmeter, 10K
+<br />R2-R5: 4K7
+<br />T1: STD12NF06, see text
+<br />T2-T5: BC550
+<br />T6-T9: BC560
+This works as follows. The microcontroller attempts to keep the voltage at PD6 at 2.5V. It does this by making the pulses it generates on PD5 longer or shorter. These pulses cause T1 to conduct which results in a current through L1. When T1 blocks, that current continues to flow for a short time due to L1. C4 is now charged via D1. The current that flows into C4 allows the voltage across C4 to be higher than the power supply voltage. This voltage is divided via R1 and supplied to PD6. In this way the microcontroller regulates the voltage across C4 to a set value. R1 is used to adjust the voltage across C4 to the required 20V. Start with the potentiometer in the centre position and turn towards the ground connection to increase the voltage to 20V. The power supply for the microcontroller is handled by the 78L05 and the necessary decoupling capacitors around it.
 
+In addition to the PWM logic that is programmed into the microcontroller, there is also a simple character generator built in. Even though it is possible to obtain quite a high resolution (32 nozzles are being controlled) the font uses just 8x8 pixels per character. This low resolution was deliberate because there is only 2k of flash ROM available in the microcontroller. By selecting a microcontroller with more ROM a better font could be used. A considerable amount of rummaging through the junkbox was involved for this project and unfortunately the author did not have a 'bigger' microcontroller on hand. The characters are generated based on a small sentence in the flash ROM. These are then sent to the nozzles. The sectors are made active one by one and when a sector is active only one nozzle is activated. The reason that this is done for each individual nozzle is that the print head would otherwise create a local vacuum for itself. This would result in (temporarily) no ink from the print head. By changing the nozzles, the nozzles that are not driven are given time to fill with ink again.
+&nbsp;
+
+### 4. Eco-friendly metal detector - Arduino
+There are multiple variations of Metal Detector designs. This particular type of metal detector is a Pulse Induction detector which uses separate transmit and receive coils.
+The Arduino produces a pulse which is applied to the Transmit Coil for a very short period of time (4uS) via a transistor. This current from the pulse causes a sudden magnetic field to form around the coil, the expanding and collapsing field induces a voltage into the Receive Coil. This received signal is amplified by the receiving transistor and then turned into a clean digital pulse by a Voltage Comparator and in turn sampled by a Digital Input pin on the Arduino. The Arduino is programmed to measure the pulse width of the received pulse.
+In this design, the received pulse width is determined by the receive coil inductance and a capacitor. With no objects in range, the baseline pulse width measures approximately 5000 uS. When foreign metal objects come into range of the expanding and collapsing magnetic field this causes some of the energy to be induced into the object in the form of eddy currents ( Electromagnetic induction)
+The net result is that the received pulse width is reduced, this difference in pulse width is measured by the Arduino and displayed on a TFT display in various formats.
+<br />
+&nbsp;
+<p align="center">
+  <img width="450" height="360" src="https://user-images.githubusercontent.com/64124723/80281770-17270c80-872b-11ea-9fd8-98e0a9af7f05.jpg">
+  <br />Metal coils in metal detector
+</p>
+<br />
+&nbsp;
+<br />
+&nbsp;
+<p align="center">
+  <img width="450" height="360" src="https://user-images.githubusercontent.com/64124723/80281960-5ace4600-872c-11ea-8b61-69b2553d23e6.jpg">
+  <br />Metal Coil magnetic field induction(Eddy Current) effect
+</p>
+<br />
+&nbsp;
+
+The parts required are Arduino Mega 2560 (Items 1, 2 and 3 can be purchased as one bundled order), 
+3.2" TFT LCD Touch Screen (Ive included code for 3 supported variations), 
+TFT 3.2 Inch Mega Shield, 
+Transistor BC548 x 8, 
+0.047uf Greencap Capacitor x 4 (50v), 
+0.1uf Greencap Capacitor x 1 (50v), 
+1k Resistor x 4, 
+47 Resistor x 4, 
+10k Resistor x 4, 
+1M Resistor x 4, 
+2.2k Resistor x 4, 
+SPST Mini Rocker Switch, 
+Integrated Circuit LM339 Quad Differential Comparator, 
+Signal Diodes IN4148 x 4, 
+Copper WireSpool 0.3mm Diameter x 2, 
+Two Core Screened Cable - 4.0mm Diameter - 5M length, 
+USB Rechargeable Powerbank 4400mHa, 
+Piezo Buzzer, 
+Vero Board 80x100mm, 
+Plastic Case minimum 100mm Height, 55mm Depth, 160mm Width, 
+Cable Ties, 
+MDF Wood 6-8mm Thickness - 23cm x 23cm square pieces x 2, 
+Micro USB extension cable 10cm, 
+USB-A plug cable suitable to be cut down to 10cm length, 
+Headphone Audio Jack Point - Stereo, 
+Various wood and plastic spacers detector head, 
+Speed Mop Broom handle with adjustable joint (one axis movement only - see photos), 
+One piece of A3 Paper, 
+Glue Stick, 
+Electic Jig Saw cutter, 
+A4 Sheet Cardboard 3mm thickness for creating a coil former for TX and Rx coils, 
+Duct Tape, 
+Hot Glue Gun, 
+Electric Glue, 
+10 additional Arduino Header Pins, 
+PCB Terminal Pins x 20, 
+TwoPart Epoxy Glue - 5 min drying time, 
+Craft Knife, 
+5mm Plastic Tube length 30mm x 4 (I used garden watering system tubing from hardware store), 
+MDF Waterproof sealer (Ensure does not contain metal) & 
+60cm Flexible Electrical Conduit - Grey - 25mm Diameter. Make the connections and assemble the parts accordingly.
+<br />
+&nbsp;
+<p align="center">
+  <img width="450" height="360" src="https://user-images.githubusercontent.com/64124723/80282058-f2cc2f80-872c-11ea-9ec5-3fd333bd41ce.jpg">
+  <br />Schematic diagram of connections
+</p>
+<br />
+&nbsp;
+
+### 5.
 
 
 
