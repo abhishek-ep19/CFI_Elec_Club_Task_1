@@ -164,17 +164,41 @@ The hardware required for this project are SparkFun RedBoard Artemis ATP, SparkF
 <br />
 &nbsp;
 <p align="center">
-  <img width="450" height="360" src="">
-  <br />Metal Coil magnetic field induction(Eddy Current) effect
+  <img width="450" height="360" src="https://user-images.githubusercontent.com/64124723/80310543-e31a1d00-87f8-11ea-97c6-49d6b5e3321d.jpeg">
+  <br />Schematic diagram of connections
 </p>
 <br />
 &nbsp;
 
-### 8. 
+### 8. Speech Recognition at the Edge
+The hardware parts required are NXP i.MX RT1010 EVK, OLED Display Module (128X64), Male/Female Jumper Wires, Male/Female Jumper Wires,Male Header 40 Position 1 Row (0.1") &	Male Header 40 Position 1 Row (0.1"). The software requirements are NXP MCUXpresso IDE, NXP MCUXpresso SDK & TensorFlow. In this project, an application is built around a model trained to recognize words left, right, up, and down. Install MCUExpresso IDE. We can create a new project from the Quickstart Panel > New Project which displays a wizard where we can choose IMXRT1010 as development board. Install TensorFlow Lite for Microcontrollers. The model we'll be using is trained with the TensorFlow Simple Audio Recognition script. The model was trained on a Linux desktop with eGPU (Nvidia 1080 Ti) with four words "up", "down", "left", "right". The model was trained on a Linux desktop with eGPU (Nvidia 1080 Ti) with four words "up", "down", "left", "right". Other words from the datasets were used as "unknown". The created model is converted to the TensorFlow Lite model and the converted model is transformed into a C array file for deploying with the inferencing code. The TensorFlow Lite Micro SDK is used to run inference on the device. A convolutional neural network is used for the model creation. The audio is captured using Synchronous Audio Interface (SAI) with enhanced Direct Memory Access (eDMA) controller. The process begins by generating a Fast Fourier transform (FFT) for a given time slice—in this case 30 ms of captured audio data. The TensorFlow Lite model doesn't take in raw audio sample data. Instead it works with spectrograms, which are two dimensional arrays that are made up of slices of frequency information, each taken from a different time window. The OLED display is connected to the i.MXRT1010 EVK over I2C. The predicted word is displayed at the OLED display. The project can be build and debug using the MCUExpresso IDE Quickstart Panel > Build and Quickstart Panel > Debug respectively. 
+<br /> Scope for improvements are: The inferencing rate can be improved if 8-bit quantized model is used. Right now there are some ops missing in the TensorFlow Lite Micro SDK which do not allow conversion of Conv 2D to a quantized version. Currently sometimes it misses some words due to accent or noise in the audio data. The accuracy of the model can be improved if it is trained with more own voice data using transfer learning. Also, the on-board microphone data has some noise which can be either fixed using some settings or an external digital microphone can be used for better performance.
+&nbsp;
 
-
-
-
+### 9. Controlling a Motor with an H-Bridge
+An H-Bridge can be used to control motors for robotic projects. An H-Bridge is an electric circuit that allows us to apply voltage to our motors in either direction allowing the motor to run forwards or backwards. The L293D is a dual H-Bridge motor driver IC which means that it is capable of driving two motors simultaneously. The following image shows the pin layout for the L293D IC. Since the output from the GPIO ports on the BeagleBone Black is usually not enough to drive our motors, the L293D has both a Vcc (3.3V from the BeagleBone Black) and a Vmotor (power for the motors 6V->12V). The L293D also has two enable pins which should remain high to enable the motors. If the enable pins are low the H-Bridge will be disabled.
+<br />
+&nbsp;
+<p align="center">
+  <img width="450" height="360" src="https://user-images.githubusercontent.com/64124723/80391568-89365780-88cb-11ea-8471-7748382b3820.jpg">
+  <br />Schematic diagram of connections
+</p>
+<br />
+&nbsp;
+ Pins 15 and 25 of the P9 header are connected to the enable pins on the L293D IC. Both of these pins will need to be high to enable the motors. We have pins 11 and 13 of the P9 header connected to the IN1 and IN2 pins on the IC. We also have pins 21 and 23 of the P9 header connected to the IN3 and IN4 pins. The DC motors that we are driving with the L293D are connected to the OUT pins of the IC.
+<br />Code written in terminal of beaglebone will be like:
+<br />var leftMotor = try SBHBridge(forwardHeader: .P9, forwardPin: 11,
+<br />                         reverseHeader: .P9,reversePin: 13,
+<br />                        enableHeader: .P9,enablePin: 15,
+<br />                         componentName:"Left Motor")
+<br />var rightMotor = try SBHBridge(forwardHeader: .P9, forwardPin: 23,
+<br />                         reverseHeader: .P9,reversePin: 25,
+<br />                         enableHeader: .P9,enablePin: 27,
+<br />                        componentName:"Left Motor")
+<br />Now we can spin the motor in the forward direction like this:
+<br />                        leftMotor.goForward()
+<br />                        rightMotor.goForward()
+And vice versa for other motor
 
 
 
