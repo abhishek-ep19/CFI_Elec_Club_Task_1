@@ -157,7 +157,7 @@ We have to connect 2.4" LCD with an ILI9325 controller configurable to do 8-bit 
 ### 6. Cell Phone Operated Land Rover
 Traditionally, wireless controlled robots make use of RF (radio frequency) circuits, which have their disadvantages of restricted operational range, limited frequency range, and limited control. This project introduces the use of the mobile phone for robotic control.  This technology is more controller friendly as it doesn’t interfere with other controllers and can use up to twelve controls.  It also has the advantages of robust control and provides working range as large as the coverage area of the service provider. Although the look and capabilities of these robots vary, they share mechanically movable structures under some form of control. 
 <br />The robot is controlled by making a call on the mobile phone attached to the robot. In the course of the call if any button is pressed a ‘dual-tone multiple-frequency’ (DTMF) tone is heard at the other end of the call. The cell phone mounted on the robot perceives this tone and then the robot processes it by the ATmega16 microcontroller with the help of DTMF decoder MT8870. The robots are controlled in three phases namely reception, processing, and action. Here preceptors are sensors mounted on the robot and the processing is done by on-board microcontroller or processor. This robot works either with the help of motors or with some other actuators.
-&nsbp;
+&nbsp;
 
 ### 7. Handwriting Recognition
 The hardware required for this project are SparkFun RedBoard Artemis ATP, SparkFun 9DoF IMU Breakout - ICM-20948 (Qwiic), SparkFun 9DoF IMU Breakout - ICM-20948 (Qwiic), SparkFun Qwiic Cable - 500mm, Grove - Mech Keycap, Seeed Grove - Mech Keycap, Gameduino 3. As its input, it takes multidimensional accelerometer and gyroscope sensor data. Its output will be a simple classification that notifies us if one of several classes of movements, in this case 0 to 9 digit, has recently occurred. To capture accelerometer and gyroscope data in a discrete real-time steps is a time consuming and error-prone task. So, we'll use Artemis ATP development board with a Gameduino 3 touchscreen (an Arduino shield) to present a user interface which allows to select numeral (0 to 9) and also the last readings can be deleted if there was some error while data capturing. A SparkFun 9DoF IMU Breakout - ICM-20948 (Qwiic) is used to capture the accelerometer and gyroscope data. The IMU Breakout is attached to a pen close to the tip and it is connected to the Artemis ATP using a long (50cm) Qwiic cable. Using the touchscreen to start and stop the capturing was a bit slow since the screen needs right amount of pressure to response. To circumvent this issue we'll use a mechanical switch which is very sensitive to the clicks and did the right job. The captured data is saved to the files on a micro SD card attached to the Gameduino 3. Each pen movement data was captured as a separate file. The file contains no header line, only the multiple lines of the comma separated accelerometer (3-axis) and gyroscope (3-axis) data in a format as accel_X, accel_Y, accel_Z, gyro_X, gyro_Y, gyroZ. A little over 100 samples for each digits (0-9) were captured. The collected data has been split into training (60%), validation (20%), and testing (20%) datasets. Since the data was collected from the IMU sensor using scaled (16 bit) and digital low pass filter (DLPF) setting and they are already within a specified range of the accelerometer and gyroscope readings so we can use the raw data as is for training and inferencing. Since the data was collected from the IMU sensor using scaled (16 bit) and digital low pass filter (DLPF) setting and they are already within a specified range of the accelerometer and gyroscope readings so we can use the raw data as is for training and inferencing. A convolutional neural network is one of the best options suited for recognizing patterns in images and time-series sequence data. The first few layers are 2D convolution neural networks with few other regularization layers. The last layer is a fully connected dense layer with softmax activation which outputs a probability of all 10 classes. The training of the model was done on an Intel NUC with Linux and an eGPU (NVIDIA GTX 1080Ti). The TensorFlow 2.1 with Keras API is used for model creation and training process.1 The Artemis ATP receives the samples continuously from the IMU sensor and outputs the highest probability class on the Gameduino 3 shield display. The improvements could be 1. The inferencing rate can be improved if 8-bit quantized model is used. 2. Right now there are some ops missing in the TensorFlow Lite Micro SDK which do not allow conversion of Conv 2D to a quantized version. 3. collecting the data while pen is not moving (at rest in different orientations) can reduce false positives.
@@ -198,11 +198,56 @@ An H-Bridge can be used to control motors for robotic projects. An H-Bridge is a
 <br />Now we can spin the motor in the forward direction like this:
 <br />                        leftMotor.goForward()
 <br />                        rightMotor.goForward()
-And vice versa for other motor
+And vice versa for other motor.
 
+### 10. Internet Controlled LED Strip Using ESP32 + Arduino
+The hardware required are	Espressif ESP32S, NeoPixel Ring: WS2812 5050 RGB LED,	Adafruit NeoPixel Ring: WS2812 5050 RGB LED & 5V DC power supply.
+<br />ESP32 is running an HTTP server and each time you click a button the theme is changed. That HTTP server is accessible both through a local network and the internet.
+<br />Connect 5V DC power supply to your LED strip. LED strip used in this tutorial contains 60 pixels and one meter, and needs even 3.5 A / m. Depending on how many pixels are you going to use buy an appropriate 5V DC power converted. LED strip contains only 3 input pins: +5V, GND and Din. ESP32 is powered from 3.3V that is obtained thanks to onboard LDO linear regulator. Connect your power supply to the LDO input pin - in my dev board it's called V5, but in your board it can be named differently. Connect LED strip data input pin Din to G12 pin on your board.
+<br />Husarnet provides modified ESP32-IDF - thanks to that you can use almost the same API as in standard Arduino package for ESP32. Husarnet also provides easy integration with Arduino IDE.
+<br />1. Install neopixelBus library in Arduino IDE
+<br />2. Install Husarnet IDF for ESP32:
+<br />3. Install ESP32 dev boards
+<br />One can clone the code for ESP32 board or write by self.
+<br />That's comfortable to add more than one network credentials here - in case of moving your project to different physical destinations you will not need to reprogram your ESP32 each time.
+<br />// Add your networks credentials here
+<br />const char* ssidTab[NUM_NETWORKS] = {
+<br />  "wifi-network-1",
+<br />};
+<br />const char* passwordTab[NUM_NETWORKS] = {
+<br />  "wifi-pass-1",
+<br />};
+<br />HusarnetServer server(8000);
+<br />String header;
+<br />void setup() {
+<br />  Serial.begin(115200);
+<br />  strip.Begin();
+<br />  strip.Show();
+<br /> And so on, to write code for the LED Strip. In Arduino IDE open Tools -> Serial Monitor and wait until your ESP32 is connected to Wi-Fi network. After a few seconds you should see a link. Copy that link and open it in your web browser. Open ledstripnet and left click ledstrip element
+Select Make the Web UI public and click update button. In the Info column within ledstripnet network you should see Web UI button with a public available link to a control panel. Each time you will power your ESP32 board under that link you will have an access to a web UI to control your LED strip.
+### 11. ESP32 Xiaomi Hack - Get Data Wirelessly
+The hardware required are ESP32, a 2.8” color TFT display and the Xiaomi temperature and humidity sensor. Connect the TFT display with the ESP32 board as shown in the figure:
+<br />
+&nbsp;
+<p align="center">
+  <img width="450" height="360" src="https://user-images.githubusercontent.com/64124723/80408476-d8d54d00-88e4-11ea-854f-e77b1d8d733f.png">
+  <br />Schematic diagram of connections
+</p>
+<br />
+&nbsp;
+The code for ESP32 board:
+<br />#define SCAN_TIME  10 // seconds
+<br />We initialize the display and the Bluetooth module of the ESP32 board and then we draw the user interface on the screen.
+<br />
+<br />void setup() {  WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, 0); //disable brownout detector
+<br />  tft.begin();  Serial.begin(115200);
+<br />  Serial.println("ESP32 XIAOMI DISPLAY");
+<br />  initBluetooth();  drawUI();
+<br />}
+<br />Next, we search for Bluetooth devices nearby every 10 seconds. We don’t make a connection to the Xiaomi Device since it is not needed. We only scan for nearby Bluetooth low energy peripherals and check the broadcast advertisement packets. The humidity and temperature values are stored in those packets, so we only need to read them. After we read the values we display them on the screen. As always you can find a link to the code of this project in the description attached to this tutorial.
+&nbsp;
 
-
-
+### 12. 
 
 
 
