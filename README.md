@@ -281,8 +281,14 @@ What to learn from this project:->
 <br />Define the OLED pins. Define the OLED size. Define the pins used by the BME280 sensor. Create an I2C instance for the BME280 sensor and a bme object. Create a display object for the OLED display. Get readings from BME sensor. Send readings via LoRa. Now, sensor readings are send every  seconds. The LoRa Receiver gets incoming LoRa packets and displays the received readings on an asynchronous web server. Create an index.html file, we can also include CSS and Javascript in the html code file. Now do the same for transciever module. The processor() function is what will attribute values to the placeholders we’ve created on the HTML file. It accepts as argument the placeholder and should return a String that will replace that placeholder. After inserting your network credentials, save your sketch. Then, in your Arduino IDE go to Sketch > Show Sketch Folder, and create a folder called data. Inside that folder, you should have the HTML file and the image file.
 &nbsp;
 
-### 13. 
+### 13. Personal Assistant
+The main components of this project are a Microcontroller and a Music Player module. Our microcontroller (NodeMCU) uses WiFi technology to connect to an access point with internet connection; so it can gets its required data, process it, and tells the Music Player (DFPlayer Mini) when, which MP3 file should be played. We will have the operations lined up in the operations queue. To know the no. of google unread messages we need to use Google Atom Feed that can also be used by RSS Readers. We send an HTTP request to access gmail feed and its response is in XML format. So, we count number of unread messages and use it in our program. Our file gets data from Yahoo Weather and simply sends it to us. Since we have Internet access, we will use a NTP Client to get time from a NTP Server. Libraries used are ArduinoJson, DFRobotDFPlayerMini & NTPClient. We use a micro SD card to store the MP3 file pieces. It's NodeMCU who decides which file should be played at what time and DFPlayer Mini helps him in making a meaningful sentence by decoding the MP3 files. To find the IP address for NodeMCU run Nmap on linux terminal.
+&nbsp;
 
+### 14. Video Card made on Breadboard
+In this project we aim to display an image on monitors using EEPROM, counters etc. To display an image we need to have horizontal sync and vertical sync outputs and for that we are using 10 Mhz frequency generator, 3 counters each atteached to make 12 bit counter. In hsync, we need to have signal high for display+ front porch and then, low for sync pulse and then again high for Back porch. So, when these numbers of time are reached in counters we will have the signal high to let us know that the counters have reached the time. For hsync, we'll be using 200ns for display, 10 for front porch, 32 for sync pulse and 22 for back porch. Similarly, we will do it for vsync and display time as 600 ns. Now, we'll upload the image on EEPROM with adjusted figures of pixel according to connections in counters and the 64 colours we'll be having for display. Now, after executing we can get the image.
+
+### 15.
 
 
 
