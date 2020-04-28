@@ -288,8 +288,9 @@ The main components of this project are a Microcontroller and a Music Player mod
 ### 14. Video Card made on Breadboard
 In this project we aim to display an image on monitors using EEPROM, counters etc. To display an image we need to have horizontal sync and vertical sync outputs and for that we are using 10 Mhz frequency generator, 3 counters each atteached to make 12 bit counter. In hsync, we need to have signal high for display+ front porch and then, low for sync pulse and then again high for Back porch. So, when these numbers of time are reached in counters we will have the signal high to let us know that the counters have reached the time. For hsync, we'll be using 200ns for display, 10 for front porch, 32 for sync pulse and 22 for back porch. Similarly, we will do it for vsync and display time as 600 ns. Now, we'll upload the image on EEPROM with adjusted figures of pixel according to connections in counters and the 64 colours we'll be having for display. Now, after executing we can get the image.
 
-### 15.
-
+### 15. Raspberry Pi Radio
+Install the OS Raspbian with desktop on the Pi.
+Connect the Pi to your Wifi network and enable SSH and GPIO in Raspian settings. The input of the audio amplifier is connected to the audio output of the Pi. A capacitor is placed over the 5V of the Pi to decrease noise. The hardware is connected to as what is shown in the schematic diagram. The software consists of a Python script that is run automatically upon boot. Upload the file Radio1.py to /home/pi.
 
 
 
