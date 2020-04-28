@@ -247,10 +247,41 @@ The code for ESP32 board:
 <br />Next, we search for Bluetooth devices nearby every 10 seconds. We don’t make a connection to the Xiaomi Device since it is not needed. We only scan for nearby Bluetooth low energy peripherals and check the broadcast advertisement packets. The humidity and temperature values are stored in those packets, so we only need to read them. After we read the values we display them on the screen. As always you can find a link to the code of this project in the description attached to this tutorial.
 &nbsp;
 
-### 12. 
+### 12. ESP32 LoRa Sensor Monitoring with Web Server (Long Range Communication)
+What to learn from this project:->
+<br />Send sensor readings via LoRa radio between two ESP32 boards.
+<br />Add LoRa and Wi-Fi capabilities simultaneously to your projects (LoRa + Web Server on the same ESP32 board)
+<br />Use the TTGO LoRa32 SX1276 OLED board or similar development boards for IoT projects.
+<br />The LoRa sender sends BME280 sensor readings via LoRa radio every 10 seconds;
+<br />The LoRa receiver gets the readings and displays them on a web server;
+<br />You can monitor the sensor readings by accessing the web server;
+<br />The LoRa sender and the Lora receiver can be several hundred meters apart depending on their location.
+<br />So, you can use this project to monitor sensor readings from your fields or greenhouses if they are a bit apart from your house;
+<br />The LoRa receiver is running an asynchronous web server and the web page files are saved on the ESP32 filesystem (SPIFFS);
+<br />The LoRa receiver also shows the date and time the last readings were received.
+<br />To get date and time, we use the Network Time Protocol with the ESP32.
+<br />
+&nbsp;
+<p align="center">
+  <img width="400" height="450" src="https://user-images.githubusercontent.com/64124723/80447042-fb438680-8935-11ea-9f84-be6f3abeea3d.png">
+  <br />Schematic diagram of connections
+</p>
+<br />
+&nbsp;
+<br />To program the TTGO LoRa32 SX1276 OLED boards we’ll use Arduino IDE. To upload files to the ESP32 filesystem, we’ll use the ESP32 filesystem uploader plugin. We need to install OLED, LoRa and BME280 libraries. We also need ESPAsyncWebServer and AsyncTSP libraries for building asynchronous web server. Everytime the LoRa receiver picks up a new a LoRa message, it will request the date and time from an NTP server so that we know when the last packet was received. We have to download NTPClient library.
+<br />The BME280 we’re using communicates with the ESP32 using I2C communication protocol. Connect Vin to 3.3V, Gnd to Gnd, SCL(Serial Clock Pin) to GPIO 13 & SDA to GPIO 21.
+<br />//define the pins used by the LoRa transceiver module
+<br />#define SCK 5
+<br />#define MISO 19
+<br />#define MOSI 27
+<br />#define SS 18
+<br />#define RST 14
+<br />#define DIO0 26
+<br />//select LoRa frquency: #define BAND 433E6 //for Asia
+<br />Define the OLED pins. Define the OLED size. Define the pins used by the BME280 sensor. Create an I2C instance for the BME280 sensor and a bme object. Create a display object for the OLED display. Get readings from BME sensor. Send readings via LoRa. Now, sensor readings are send every  seconds. The LoRa Receiver gets incoming LoRa packets and displays the received readings on an asynchronous web server. Create an index.html file, we can also include CSS and Javascript in the html code file. Now do the same for transciever module. The processor() function is what will attribute values to the placeholders we’ve created on the HTML file. It accepts as argument the placeholder and should return a String that will replace that placeholder. After inserting your network credentials, save your sketch. Then, in your Arduino IDE go to Sketch > Show Sketch Folder, and create a folder called data. Inside that folder, you should have the HTML file and the image file.
+&nbsp;
 
-
-
+### 13. 
 
 
 
