@@ -291,6 +291,9 @@ In this project we aim to display an image on monitors using EEPROM, counters et
 ### 15. Raspberry Pi Radio
 Install the OS Raspbian with desktop on the Pi.
 Connect the Pi to your Wifi network and enable SSH and GPIO in Raspian settings. The input of the audio amplifier is connected to the audio output of the Pi. A capacitor is placed over the 5V of the Pi to decrease noise. The hardware is connected to as what is shown in the schematic diagram. The software consists of a Python script that is run automatically upon boot. Upload the file Radio1.py to /home/pi.
+### 16. Gesture Controlled Universal Remote With Node-MCU
+Node-MCU has only one input analog pin so we need multiplexer IC for atleast 5 flex inputs. The IC works by turning on one analog input, reading it, and turning it off. It then turns on the next analog input. By doing this, it only reads one sensor at a time, sending it to the microcontroller's analog pin. The IC is able to turn on, read, and turn off the analog inputs so quickly that it seems as though it is reading them all at the same time. For the glove to know the correct signal to send, signals must be received from your TV/appliances remote and programmed into the glove's code. To receive these signals, an IR receiver is necessary. Download IRremoteESP8266 library. Now some code arrangements are to be done to make it work with the TV Remote i.e. change the dataSet to powerOn etc. The possibilities for expandability are endless!
+### 17. 
 
 
 
