@@ -293,7 +293,14 @@ Install the OS Raspbian with desktop on the Pi.
 Connect the Pi to your Wifi network and enable SSH and GPIO in Raspian settings. The input of the audio amplifier is connected to the audio output of the Pi. A capacitor is placed over the 5V of the Pi to decrease noise. The hardware is connected to as what is shown in the schematic diagram. The software consists of a Python script that is run automatically upon boot. Upload the file Radio1.py to /home/pi.
 ### 16. Gesture Controlled Universal Remote With Node-MCU
 Node-MCU has only one input analog pin so we need multiplexer IC for atleast 5 flex inputs. The IC works by turning on one analog input, reading it, and turning it off. It then turns on the next analog input. By doing this, it only reads one sensor at a time, sending it to the microcontroller's analog pin. The IC is able to turn on, read, and turn off the analog inputs so quickly that it seems as though it is reading them all at the same time. For the glove to know the correct signal to send, signals must be received from your TV/appliances remote and programmed into the glove's code. To receive these signals, an IR receiver is necessary. Download IRremoteESP8266 library. Now some code arrangements are to be done to make it work with the TV Remote i.e. change the dataSet to powerOn etc. The possibilities for expandability are endless!
-### 17. 
+### 17. Arduino & Sony Ericsson: Gsm Shield Hack
+The arduino GSM shield would allow to control arduino from anywhere in the world. However such a shield does unfortunately not come cheap. The arduino and the cellphone will need to communicate that's why we'll put the phone in PDU mode in the setup of the program.
+To prepare the arduino board use the board type in tools as 256 Serial Buffer Arduino board which will give us 64 byte limit but we can increase the size of serial buffer. To increase its limit, create a complete copy of the arduino core code, modify the buffer size in the new core code and then to create a new board which is listed in the Arduino IDE which uses this new core directory. Now, connect Tx and Rx of arduino with pins 4 and 5 respectively. Also connect the ground to pin 10 and its optional to have power from phone for the arduino borad. Now we can get an online encoder for code of PDU. The encoder allows you to see how your number looks like in PDU (the numbers get mixed up) and how a message looks like in PDU. Upload the code and put your number there so that no one else can access that arduino borad.
+### 18. 
+
+
+
+
 
 
 
