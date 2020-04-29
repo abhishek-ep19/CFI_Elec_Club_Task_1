@@ -296,7 +296,14 @@ Node-MCU has only one input analog pin so we need multiplexer IC for atleast 5 f
 ### 17. Arduino & Sony Ericsson: Gsm Shield Hack
 The arduino GSM shield would allow to control arduino from anywhere in the world. However such a shield does unfortunately not come cheap. The arduino and the cellphone will need to communicate that's why we'll put the phone in PDU mode in the setup of the program.
 To prepare the arduino board use the board type in tools as 256 Serial Buffer Arduino board which will give us 64 byte limit but we can increase the size of serial buffer. To increase its limit, create a complete copy of the arduino core code, modify the buffer size in the new core code and then to create a new board which is listed in the Arduino IDE which uses this new core directory. Now, connect Tx and Rx of arduino with pins 4 and 5 respectively. Also connect the ground to pin 10 and its optional to have power from phone for the arduino borad. Now we can get an online encoder for code of PDU. The encoder allows you to see how your number looks like in PDU (the numbers get mixed up) and how a message looks like in PDU. Upload the code and put your number there so that no one else can access that arduino borad.
-### 18. 
+### 18. ATtiny85 Mini Arcade: Snake
+Since it is a mini game we'll be using the ATtiny85 and simple 2 axis joystick & DFRobot’s 128 x 64 OLED screen.Make the connections. Now, we'll add specifications to the game like the snake eating the fruit and fruit getting added at a random new location.
+
+
+
+
+
+
 
 
 
