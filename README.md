@@ -300,12 +300,10 @@ To prepare the arduino board use the board type in tools as 256 Serial Buffer Ar
 Since it is a mini game we'll be using the ATtiny85 and simple 2 axis joystick & DFRobot’s 128 x 64 OLED screen.Make the connections. Now, we'll add specifications to the game like the snake eating the fruit and fruit getting added at a random new location.
 ### 19. ESP32 + MPU9250: 3D Orientation Visualisation
 MPU9250 is IMU (Inertial Measurement Unit) combines not only 3D accelerometer, 3D gyro and 3D compass but also DMP (Digital Motion Processor). A web page with a 3D cube visualizing orientation of MPU9250 is hosted by ESP32. Real time data from MPU9250 is sent to a web browser through a websocket. Data is visualised by the three.js library to visualise the orientation of the cube. Connect P22 to SCL, P21 to SDA, P19 to INT & GND to GND. Install husranet and ArduinoJson library in arduino IDE. Install arduinoWebsockets-master so that data can be sent back and forth. Install SparkFun_MPU-9250-DMP_Arduino_Library also to have the data from IMU sensor and process it. Upload the program on the ESP32 and go to the web page hosted by the ESP32 after getting the http link.
-### 20. Custom Object Detection with CSI IR Camera on NVIDIA Jetson
-In this project, we will demonstrate how to use a Camera Serial Interface (CSI) Infrared (IR) Camera on the NVIDIA Jetson Nano with Microsoft Cognitive Services, Azure IoT Edge, and Azure IoT Central.
-
-
-
-
+### 20. Arduino Cell Phone 4G Signal Booster / Repeater
+The cell phone base station signals are constantly being transmitted from one or more masts owned by the phone company. The external antenna receives the good quality signal and sends it down a shielded cable to a filter which very accurately stops everything except a very small slice of frequencies. For phone, these frequencies are centered around 806 MHz and have a spread, or bandwidth, of 30 MHz. The signal then goes into a LNA (Low Noise Amplifier) which does a fair bit of amplification at low power. It's much more efficient to 'cascade' the amplifiers rather than try and do everything with one device. Next is the Variable Gain Amplifier, or VGA, which does most of the grunt work and has the ability to be controlled by a microprocessor by means of very simple SPI code.
+ The gain needs to be controlled as sometimes the base station signal can be quite strong and we don't want to damage our phone or create a feedback loop between the two antennae. Simultaneously, the signal comes out of the BPF and routes into an RSSI (Received Signal Strength Indicator) which provides an analogue signal ie a DC voltage to the micro controller, which can turn down the VGA if the signal is too strong. At the moment, control of the VGA is manual by means of a slide potentiometer. Get the band pass filters and low noise amplifier module. Connect VGA to the arduino board by connecting pins for clock, Chip select and MOSI. Connect the TFT screen to the arduino board. Upload the code in the arduino board.
+### 21. 
 
 
 
