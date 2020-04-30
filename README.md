@@ -87,47 +87,8 @@ The net result is that the received pulse width is reduced, this difference in p
 <br />
 &nbsp;
 
-The parts required are Arduino Mega 2560 (Items 1, 2 and 3 can be purchased as one bundled order), 
-3.2" TFT LCD Touch Screen (Ive included code for 3 supported variations), 
-TFT 3.2 Inch Mega Shield, 
-Transistor BC548 x 8, 
-0.047uf Greencap Capacitor x 4 (50v), 
-0.1uf Greencap Capacitor x 1 (50v), 
-1k Resistor x 4, 
-47 Resistor x 4, 
-10k Resistor x 4, 
-1M Resistor x 4, 
-2.2k Resistor x 4, 
-SPST Mini Rocker Switch, 
-Integrated Circuit LM339 Quad Differential Comparator, 
-Signal Diodes IN4148 x 4, 
-Copper WireSpool 0.3mm Diameter x 2, 
-Two Core Screened Cable - 4.0mm Diameter - 5M length, 
-USB Rechargeable Powerbank 4400mHa, 
-Piezo Buzzer, 
-Vero Board 80x100mm, 
-Plastic Case minimum 100mm Height, 55mm Depth, 160mm Width, 
-Cable Ties, 
-MDF Wood 6-8mm Thickness - 23cm x 23cm square pieces x 2, 
-Micro USB extension cable 10cm, 
-USB-A plug cable suitable to be cut down to 10cm length, 
-Headphone Audio Jack Point - Stereo, 
-Various wood and plastic spacers detector head, 
-Speed Mop Broom handle with adjustable joint (one axis movement only - see photos), 
-One piece of A3 Paper, 
-Glue Stick, 
-Electic Jig Saw cutter, 
-A4 Sheet Cardboard 3mm thickness for creating a coil former for TX and Rx coils, 
-Duct Tape, 
-Hot Glue Gun, 
-Electric Glue, 
-10 additional Arduino Header Pins, 
-PCB Terminal Pins x 20, 
-TwoPart Epoxy Glue - 5 min drying time, 
-Craft Knife, 
-5mm Plastic Tube length 30mm x 4 (I used garden watering system tubing from hardware store), 
-MDF Waterproof sealer (Ensure does not contain metal) & 
-60cm Flexible Electrical Conduit - Grey - 25mm Diameter. Make the connections and assemble the parts accordingly.
+Make the connections accordingly.
+  
 <br />
 &nbsp;
 <p align="center">
@@ -144,6 +105,7 @@ We have to connect 2.4" LCD with an ILI9325 controller configurable to do 8-bit 
 ### 6. Cell Phone Operated Land Rover
 Traditionally, wireless controlled robots make use of RF (radio frequency) circuits, which have their disadvantages of restricted operational range, limited frequency range, and limited control. This project introduces the use of the mobile phone for robotic control.  This technology is more controller friendly as it doesn’t interfere with other controllers and can use up to twelve controls.  It also has the advantages of robust control and provides working range as large as the coverage area of the service provider. Although the look and capabilities of these robots vary, they share mechanically movable structures under some form of control. 
 <br />The robot is controlled by making a call on the mobile phone attached to the robot. In the course of the call if any button is pressed a ‘dual-tone multiple-frequency’ (DTMF) tone is heard at the other end of the call. The cell phone mounted on the robot perceives this tone and then the robot processes it by the ATmega16 microcontroller with the help of DTMF decoder MT8870. The robots are controlled in three phases namely reception, processing, and action. Here preceptors are sensors mounted on the robot and the processing is done by on-board microcontroller or processor. This robot works either with the help of motors or with some other actuators.
+The ATmega microcontroller can be connected with the IC of an H-bridge(connected with motor) so that motor can rotate in either of the direction and we can have both the movements in the forward and backward direction.
 &nbsp;
 
 ### 7. Handwriting Recognition
