@@ -331,12 +331,6 @@ Install latest version of Raspbian and install sense-hat.Carefully, push the sen
 
 We can code into python 3 IDE to get the sensors readings. Import csv (comma separated values)module to get the readings separated by the commas. We can code according to at what intervals do we want the readings to be taken. Cron will run any command you tell it to run, whenever you have scheduled for it to do so. So we can use cron job to start reading the python script automatically rather than doing it manually. We can get any data from sense hat that we want to by simply changing the details in the script.
 
-### 25. 
-
-
-
-
-
-
-
-
+### 25. GooglePi - Google Assistant on Raspberry Pi
+First, set up Raspberry pi and then open google console cloud and create a new project named googlepi. Open API manager and change the settings by clicking on dashboard. Enable API and now open library and search google assistant named google assistant API and enable it. In credentials under Oauth consent screen enter the product id and save it.
+Now go to OAuth client ID under credentials choose others and create authentication key. Download the Credential by clicking down arrow and get a json file. Install python3 and download dependencies. Setup Python3. Install Google Assistant SDK by using the command 'python -m pip install google-assistant-sdk[samples]'. Setup Google Assistant SDK with Credentials. Now, allow to login in with our id. Run the google assistant by typing the command 'python -m googlesamples.assistant'. Connect the mic and speaker to the pi board.
