@@ -59,19 +59,6 @@ Before starting with the project we need to know what actually happens in a norm
 <br />
 &nbsp;
 
-<br />B1: 9V battery
-<br />C1, C2: electrolithic capacitor, 22uF
-<br />C3: capacitor, 100nF
-<br />C4: capacitor, 22uF, 25V
-<br />L1: See text
-<br />IC1: 78L05
-<br />IC2: ATTiny2313
-<br />D1: 1N4001
-<br />R1: trimpotmeter, 10K
-<br />R2-R5: 4K7
-<br />T1: STD12NF06, see text
-<br />T2-T5: BC550
-<br />T6-T9: BC560
 This works as follows. The microcontroller attempts to keep the voltage at PD6 at 2.5V. It does this by making the pulses it generates on PD5 longer or shorter. These pulses cause T1 to conduct which results in a current through L1. When T1 blocks, that current continues to flow for a short time due to L1. C4 is now charged via D1. The current that flows into C4 allows the voltage across C4 to be higher than the power supply voltage. This voltage is divided via R1 and supplied to PD6. In this way the microcontroller regulates the voltage across C4 to a set value. R1 is used to adjust the voltage across C4 to the required 20V. Start with the potentiometer in the centre position and turn towards the ground connection to increase the voltage to 20V. The power supply for the microcontroller is handled by the 78L05 and the necessary decoupling capacitors around it.
 
 In addition to the PWM logic that is programmed into the microcontroller, there is also a simple character generator built in. Even though it is possible to obtain quite a high resolution (32 nozzles are being controlled) the font uses just 8x8 pixels per character. This low resolution was deliberate because there is only 2k of flash ROM available in the microcontroller. By selecting a microcontroller with more ROM a better font could be used. A considerable amount of rummaging through the junkbox was involved for this project and unfortunately the author did not have a 'bigger' microcontroller on hand. The characters are generated based on a small sentence in the flash ROM. These are then sent to the nozzles. The sectors are made active one by one and when a sector is active only one nozzle is activated. The reason that this is done for each individual nozzle is that the print head would otherwise create a local vacuum for itself. This would result in (temporarily) no ink from the print head. By changing the nozzles, the nozzles that are not driven are given time to fill with ink again.
