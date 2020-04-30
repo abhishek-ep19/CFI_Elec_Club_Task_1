@@ -298,11 +298,10 @@ The arduino GSM shield would allow to control arduino from anywhere in the world
 To prepare the arduino board use the board type in tools as 256 Serial Buffer Arduino board which will give us 64 byte limit but we can increase the size of serial buffer. To increase its limit, create a complete copy of the arduino core code, modify the buffer size in the new core code and then to create a new board which is listed in the Arduino IDE which uses this new core directory. Now, connect Tx and Rx of arduino with pins 4 and 5 respectively. Also connect the ground to pin 10 and its optional to have power from phone for the arduino borad. Now we can get an online encoder for code of PDU. The encoder allows you to see how your number looks like in PDU (the numbers get mixed up) and how a message looks like in PDU. Upload the code and put your number there so that no one else can access that arduino borad.
 ### 18. ATtiny85 Mini Arcade: Snake
 Since it is a mini game we'll be using the ATtiny85 and simple 2 axis joystick & DFRobot’s 128 x 64 OLED screen.Make the connections. Now, we'll add specifications to the game like the snake eating the fruit and fruit getting added at a random new location.
-
-
-
-
-
+### 19. ESP32 + MPU9250: 3D Orientation Visualisation
+MPU9250 is IMU (Inertial Measurement Unit) combines not only 3D accelerometer, 3D gyro and 3D compass but also DMP (Digital Motion Processor). A web page with a 3D cube visualizing orientation of MPU9250 is hosted by ESP32. Real time data from MPU9250 is sent to a web browser through a websocket. Data is visualised by the three.js library to visualise the orientation of the cube. Connect P22 to SCL, P21 to SDA, P19 to INT & GND to GND. Install husranet and ArduinoJson library in arduino IDE. Install arduinoWebsockets-master so that data can be sent back and forth. Install SparkFun_MPU-9250-DMP_Arduino_Library also to have the data from IMU sensor and process it. Upload the program on the ESP32 and go to the web page hosted by the ESP32 after getting the http link.
+### 20. Custom Object Detection with CSI IR Camera on NVIDIA Jetson
+In this project, we will demonstrate how to use a Camera Serial Interface (CSI) Infrared (IR) Camera on the NVIDIA Jetson Nano with Microsoft Cognitive Services, Azure IoT Edge, and Azure IoT Central.
 
 
 
