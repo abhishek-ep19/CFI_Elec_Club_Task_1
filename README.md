@@ -296,7 +296,45 @@ The third button is an onboard hardware reset button, allowing the user to quick
 The third form of user interfacing is the connection between the computer and the MSP432 microprocessor.
  The Grove connectors can be used to communicate with additional external devices through UART or I2C, such as an accelerometer, thermocouple, or LCD screen. This will allow for the three ultrasonic sensors and two infrared sensors to sample at a high rate and give the microcontroller the most up to date information as the robot completes its tasks. An oscillator circuit is included in the hardware required for correct and optimal performance of the microcontroller.  The ultrasonic sensors will be mounted on the front, left, and right sides of the Micromouse so that walls can be detected on each side of it and the maze can be mapped.
  When the sound wave returns, the echo pin is set to low. The distance reading is determined by the amount of time the echo signal is high using the formula centimeters = uS/58. Since the MSP432P411Y does not have direct PWM reading capability, the echo pin is connected to a GPIO pin on the microcontroller that triggers an interrupt on both the rising and falling edges of the signal to start and stop a timer. This allows the microcontroller to determine the amount of time the signal was high and then converts that measurement to the appropriate distance using the previous formula. Two IR detectors are used to help determine where the Micromouse is in relation to the line, rather than just one sensor to tell if it is on the line. As for the maze solving algorithm, the best determined approach was to use a modified Breadth-First search.
-### 22. 
+### 22. Arduino Menu with APDS 9960 Gesture Sensor Control
+First connect the gesture sensor, and write the code according to the results we want from the gesture. Connect the LCD screen with the arduino board and have an I2C synchronous connection with it. And write the code that if the gesture sensor is up the LED 1 is on and if the gesture is downwards then the led 2 is on otherwise both the leds are off.
+<br />
+&nbsp;
+<p align="center">
+  <img width="400" height="450" src="https://user-images.githubusercontent.com/64124723/80727330-3525b000-8b23-11ea-88dd-dd6b70e2e7cf.gif">
+  <br />It Works!
+</p>
+<br />
+&nbsp;
+
+### 23. Connect BLE Weather Sensor to the Cloud
+The learning outcomes of this project are to know how to send sensor data to the AWS cloud through Bluetooth.
+Connect the Mikroe Clicks and the Curiosity Nano board to the Curiosity Nano Base for Click Boards. Atmega4808 provides two functionalities: the command state for prototyping purposes and the application state to run the weather sensor functionality.
+During the command state, the MCU acts as a UART bridge between the serial terminal and the RN4870/71 module.
+The BLE-connected weather sensor operation takes place during the application state.
+During this state, the MCU reads data from the weather sensors and updates the characteristic values.
+The characteristic values are then sent to the cloud gateway through the RN4870/71 BLE module.
+In  MPLAB X, open MCC and in sensors drop down menu select the readings as weather and now the generate button will generate the code in MCC which we'll upload to ATmega4808. Get the MAC address from the RN4870 module and write it in the lambda function code for the Raspberry Pi cloud gateway. Change some settings if required to for changing the COM port to COM5 and set the baud rate at 115200.
+Send the character "/" & "d" to receive the information from the RN4870 module and identify the MAC address.
+Deploy the lambda function to the gateway.
+
+### 24. Sense HAT data logger
+Install latest version of Raspbian and install sense-hat.Carefully, push the sense HAT into the raspberry pi so that it's pins get to attached with that of pi.
+<br />
+&nbsp;
+<p align="center">
+  <img width="400" height="450" src="https://user-images.githubusercontent.com/64124723/80729024-4cfe3380-8b25-11ea-9e26-976a33bfd770.gif">
+  <br />How to attach the sensor and pi
+</p>
+<br />
+&nbsp;
+
+We can code into python 3 IDE to get the sensors readings. Import csv (comma separated values)module to get the readings separated by the commas. We can code according to at what intervals do we want the readings to be taken. Cron will run any command you tell it to run, whenever you have scheduled for it to do so. So we can use cron job to start reading the python script automatically rather than doing it manually. We can get any data from sense hat that we want to by simply changing the details in the script.
+
+### 25. 
+
+
+
 
 
 
