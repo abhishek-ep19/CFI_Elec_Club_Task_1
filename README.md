@@ -269,7 +269,7 @@ First connect the gesture sensor, and write the code according to the results we
 <br />
 &nbsp;
 
-### 23. Connect BLE Weather Sensor to the Cloud
+### [23. Connect BLE Weather Sensor to the Cloud](https://www.hackster.io/ble-weather-aws/connect-ble-weather-sensor-to-the-cloud-e79d9d)
 The learning outcomes of this project are to know how to send sensor data to the AWS cloud through Bluetooth.
 Connect the Mikroe Clicks and the Curiosity Nano board to the Curiosity Nano Base for Click Boards. Atmega4808 provides two functionalities: the command state for prototyping purposes and the application state to run the weather sensor functionality.
 During the command state, the MCU acts as a UART bridge between the serial terminal and the RN4870/71 module.
