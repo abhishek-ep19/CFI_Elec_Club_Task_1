@@ -196,7 +196,7 @@ The code for ESP32 board:
 <br />Next, we search for Bluetooth devices nearby every 10 seconds. We don’t make a connection to the Xiaomi Device since it is not needed. We only scan for nearby Bluetooth low energy peripherals and check the broadcast advertisement packets. The humidity and temperature values are stored in those packets, so we only need to read them. After we read the values we display them on the screen. As always you can find a link to the code of this project in the description attached to this tutorial.
 &nbsp;
 
-### 12. ESP32 LoRa Sensor Monitoring with Web Server (Long Range Communication)
+### 12. [ESP32 LoRa Sensor Monitoring with Web Server (Long Range Communication)](https://randomnerdtutorials.com/esp32-lora-sensor-web-server/)
 What to learn from this project:->
 <br />Send sensor readings via LoRa radio between two ESP32 boards.
 <br />Add LoRa and Wi-Fi capabilities simultaneously to your projects (LoRa + Web Server on the same ESP32 board)
